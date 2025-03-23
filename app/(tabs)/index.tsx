@@ -5,9 +5,11 @@ import { Link } from 'expo-router';
 
 const index = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView className="flex-1 justify-center items-center">
       <Text>index</Text>
-      <Link href="/onboarding">Link to unboarding</Link>
+      <Link className="text-4xl" href="/onboarding">
+        Link to unboarding
+      </Link>
     </SafeAreaView>
   );
 };
