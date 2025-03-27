@@ -5,6 +5,7 @@ import { Link, useRouter } from 'expo-router';
 import { images } from '@/constants/images';
 import { icons } from '@/constants/iconst';
 import SearchBar from '@/components/SearchBar';
+import { URLS } from '@/enums/URLS';
 
 const index = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const index = () => {
         <View>
           <SearchBar
             onPress={() => {
-              router.push('/search');
+              router.push(URLS.SEARCH);
             }}
             placeholder="Search for a movie"
           />
