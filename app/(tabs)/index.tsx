@@ -1,14 +1,23 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Link, useRouter } from 'expo-router';
-import { images } from '@/constants/images';
-import { icons } from '@/constants/iconst';
 import SearchBar from '@/components/SearchBar';
+import { icons } from '@/constants/iconst';
+import { images } from '@/constants/images';
 import { URLS } from '@/enums/URLS';
+import { fetchPopularMovies } from '@/services/api';
+import useFetch from '@/services/useFetch';
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
 
 const index = () => {
   const router = useRouter();
+
+  const {
+    data: moviesData,
+    error: moviesError,
+    isLoading: moviesIsLoading,
+  } = useFetch(() => fetchPopularMovies(), true);
+
+  console.log(moviesData, moviesError, moviesIsLoading);
 
   return (
     <View className="flex-1 bg-primary">
