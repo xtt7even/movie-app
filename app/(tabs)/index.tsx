@@ -6,7 +6,7 @@ import { fetchPopularMovies } from '@/services/api';
 import useFetch from '@/services/useFetch';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { FlatList, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 const index = () => {
   const router = useRouter();
@@ -16,8 +16,6 @@ const index = () => {
     error: moviesError,
     isLoading: moviesIsLoading,
   } = useFetch(() => fetchPopularMovies(), true);
-
-  console.log(moviesData, moviesError, moviesIsLoading);
 
   return (
     <View className="flex-1 bg-primary">
@@ -33,6 +31,12 @@ const index = () => {
           />
         </View>
       </ScrollView>
+      <>
+        <FlatList
+          data={moviesData}
+          renderItem={({ item }) => <Text className="text-white">{item.title}</Text>}
+        ></FlatList>
+      </>
     </View>
   );
 };
