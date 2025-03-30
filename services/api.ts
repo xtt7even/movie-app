@@ -8,9 +8,15 @@ export const fetchPopularMovies = () => {
     method: 'GET',
     headers: API_CONFIG.HEADERS,
   })
-    .then((response) => response.json())
-    .then((json) => json.movies)
-    .catch((error) => console.error(error));
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      return json.results;
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 };
 
 // export const fetchMoviesByName = (name: string) => {
